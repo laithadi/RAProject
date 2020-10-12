@@ -14,7 +14,7 @@ Saif - 2266061402
 
 
 UI 
-- owaise
+- owais
 - rohan 
 - moman 
 - Mo 
