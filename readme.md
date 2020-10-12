@@ -9,3 +9,16 @@ Mo - 6475348141
 Rohan - 6479696394
 
 Owais - 6475591448
+
+
+UI 
+- owaise
+- rohan 
+- moman 
+- Mo 
+
+Logic 
+- laith 
+- saif 
+- anfdrew 
+- thenura 
