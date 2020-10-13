@@ -1,0 +1,17 @@
+.body {
+    margin: 0;
+}
+
+.canvas-style {
+    border: 1px solid;
+    width:100%;
+}
+
+
+.start_btn {
+    margin-bottom: 2rem;
+}
+
+.options {
+    margin: 2rem 0;
+}
