@@ -10,7 +10,6 @@ Rohan - 6479696394
 
 Owais - 6475591448
 
-
 UI 
 - owaise
 - rohan 
@@ -20,7 +19,7 @@ UI
 Logic 
 - laith 
 - saif 
-- anfdrew 
+- andrew 
 - thenura 
 
 
