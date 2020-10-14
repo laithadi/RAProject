@@ -30,8 +30,8 @@ function update() {
 function drawRotatedImage(ctx, image, x, y, width, height, rotation) {
 
   // Cache calculation for half width and height
-  var halfWidth = width / 2;
-  var halfHeight = height / 2;
+  var halfWidth = width;
+  var halfHeight = height;
 
   // Save canvas context state
   ctx.save();
@@ -70,18 +70,18 @@ function draw(ctx, image) {
 // Create / load a new image object
 // --------------------------------------------------
 
-// Create a new image object
-var image = new Image();
-
-// Set the image source and start loading
-image.src = 'assets/big-block.png';
 
 
-// Attempt to draw the image
-draw(ctx, image);
 
 
-// kinda displays the ramp with the updated angle
+// // kinda displays the ramp with the updated angle
+
+var angle = document.getElementById("angle-input").value;
+var image2 = new Image();
+image2.src = 'assets/small-block.png';
+drawRotatedImage(ctx, image2, 100, 520, 900, 120, angle);
+
+
 function positionRamp() {
 
   var angle = document.getElementById("angle-input").value;
