@@ -10,57 +10,54 @@
   <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
-<body>
-  <div class="container">
-    <h1>Ramp Simulation</h1>
-
-    <canvas id="main" class="canvas-style" height="700"></canvas>
-
-    <div class="control area options">
-      <button onclick="positionRamp()" type="button" class="btn btn-primary start_btn">Start</button>
-      <p>Options</p>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">Mass</span>
-        </div>
-        <input id="mass-input" type="number" class="form-control" placeholder="5" aria-label="Mass"
-          aria-describedby="basic-addon1">
-        <div class="input-group-append">
-          <span class="input-group-text" id="basic-addon1">mg</span>
-        </div>
-      </div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">Angle of incline</span>
-        </div>
-        <input id="angle-input" type="number" class="form-control" placeholder="15" aria-label="angle"
-          aria-describedby="basic-addon1">
-        <div class="input-group-append">
-          <span class="input-group-text" id="basic-addon1">degrees</span>
-        </div>
-      </div>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon1">Coefficient of Friction</span>
-        </div>
-        <input id="coeeficient-input" type="number" class="form-control" placeholder="0.3" aria-label="friction"
-          aria-describedby="basic-addon1">
-      </div>
+<div class="control area options">
+  <button onclick="" type="button" class="btn btn-primary start_btn">Start</button>
+  <p>Options</p>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Mass</span>
+    </div>
+    <input id="mass-input" type="number" class="form-control" placeholder="5" aria-label="Mass"
+      aria-describedby="basic-addon1">
+    <div class="input-group-append">
+      <span class="input-group-text" id="basic-addon1">mg</span>
     </div>
   </div>
+  <input id="mass-input" type="number" class="form-control" placeholder="5" aria-label="Mass"
+    aria-describedby="basic-addon1">
+  <div class="input-group-append">
+    <span class="input-group-text" id="basic-addon1">mg</span>
+  </div>
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Angle of incline</span>
+  </div>
+  <input id="angle-input" type="number" class="form-control" placeholder="15" aria-label="angle"
+    aria-describedby="basic-addon1">
+  <div class="input-group-append">
+    <span class="input-group-text" id="basic-addon1">degrees</span>
+  </div>
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1">Coefficient of Friction</span>
+  </div>
+  <input id="coeeficient-input" type="number" class="form-control" placeholder="0.3" aria-label="friction"
+    aria-describedby="basic-addon1">
+</div>
+</div>
+</div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-  <script src="script.js"></script>
-  <script src="logic.js"></script>
+<script src="script.js"></script>
+<script src="logic.js"></script>
 </body>
 
 </html>
