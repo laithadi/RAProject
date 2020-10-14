@@ -32,15 +32,15 @@ var c = canvas.getContext('2d');
 // canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
-// placing the base block in the canvas
-var BBImg = new Image();
-BBImg.src = 'assets/big-block.png';
-c.drawImage(BBImg, 50, 600);
+// // placing the base block in the canvas
+// var BBImg = new Image();
+// BBImg.src = 'assets/big-block.png';
+// c.drawImage(BBImg, 50, 600);
 
-// placing the moving ramp
-var SBImg = new Image();
-SBImg.src = 'assets/small-block.png';
-c.drawImage(SBImg, 50, 600);
+// // placing the moving ramp
+// var SBImg = new Image();
+// SBImg.src = 'assets/small-block.png';
+// c.drawImage(SBImg, 50, 300);
 
 //---------------------------
 // Functions to draw shapes
@@ -49,7 +49,7 @@ c.drawImage(SBImg, 50, 600);
 // the ramp and fill it with the image of wood
 //---------------------------
 const drawRect = (x, y, width, height) => {
-  c.fillStyle = 'rgba(255, 0, 0, 0.1)'
+  c.fillStyle = "#fa34a3"
   c.fillRect(x, y, width, height);
 }
 
@@ -67,29 +67,28 @@ const drawCircle = (x, y, r) => {
   c.strokeStyle = 'blue';
   c.stroke();
 }
+//---------------------------
+// Functions to animate shapes
+//---------------------------
+var x = 200;
+var y = 300;
+var dx = 3;
+var dy = 3;
+function animate () {
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+  drawRect(x, y, 600, 100);
 
-// //---------------------------
-// // Functions to animate shapes
-// //---------------------------
-// var x = Math.random() * innerWidth;
-// var y = Math.random() * innerHeight;
-// var dx = (Math.random() - 0.5) * 3;
-// var dy = (Math.random() - 0.5) * 3;
-// const animate = () => {
-//   ctx.clearRect(0, 0, innerWidth, innerHeight);
-//   drawRect(x, y, 100, 100);
+  if (x + 100 > innerWidth || x + 600 < 0)
+    dx = -dx;
 
-//   if (x + 100 > innerWidth || x + 600 < 0)
-//     dx = -dx;
+  x += dx;
 
-//   x += dx;
+  if (y + 600 > innerHeight || y + 600 < 0)
+    dy = -dy;
 
-//   if (y + 100 > innerHeight || y + 100 < 0)
-//     dy = -dy;
+  y += dy;
+  requestAnimationFrame(animate);
+}
 
-//   y += dy;
-//   requestAnimationFrame(animate);
-// }
-
-// animate();
+animate();
 
