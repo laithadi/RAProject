@@ -2,6 +2,8 @@ function logic() {
 
     // set the varibles
     var mass = document.getElementById("mass-input").value;
+    var angle = document.getElementById("angle-input").value;
+    var coefficient = document.getElementById("coeeficient-input").value;
     // the position of inlcine at the BOTTOM
     // the position of inlcine at the TOP
     // mass
