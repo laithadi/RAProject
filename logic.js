@@ -25,5 +25,5 @@ function moveObjectDownRamp() {
 
 
     // loop this function to show animation
-    requestAnimationFrame(logic)
+    requestAnimationFrame(moveObjectDownRamp)
 }
