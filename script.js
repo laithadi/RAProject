@@ -54,8 +54,6 @@ function drawRotatedImage(ctx, image, x, y, width, height, rotation) {
 // --------------------------------------------------
 
 function draw(ctx, image) {
-  var uk = Number(document.getElementById("coeeficient-input"));
-
   // If the image is not ready, wait and try again in
   // approx 50 milliseconds
   if (!image.complete) {
@@ -64,7 +62,6 @@ function draw(ctx, image) {
     }, 50);
     return;
   }
-  drawRotatedImage(ctx, image, 100, 520, 900, 120, uk);
   // Basic image draw
   //ctx.drawImage(image, 100, 520, 900, 120);
 }
@@ -84,7 +81,7 @@ image.src = 'assets/big-block.png';
 draw(ctx, image);
 
 
-// kinda displays the ramp with the updated angle 
+// kinda displays the ramp with the updated angle
 function positionRamp() {
 
   var angle = document.getElementById("angle-input").value;
