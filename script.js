@@ -1,6 +1,3 @@
-// var canvas = document.querySelector('canvas');
-// var ctx = canvas.getContext('2d');
-
 const setSlider = () => {
   var weightSlider = document.getElementById("weight");
   var angleSlider = document.getElementById("angle");
@@ -44,12 +41,6 @@ c.drawImage(BBImg, 50, 600);
 var SBImg = new Image();
 SBImg.src = 'assets/small-block.png';
 c.drawImage(SBImg, 50, 300);
-
-// var canvas = document.querySelector('canvas');
-// var ctx = canvas.getContext('2d');
-
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
 
 //---------------------------
 // Functions to draw shapes
