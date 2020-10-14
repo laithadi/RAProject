@@ -1,69 +1,86 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Ramp Simulation</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css" type="text/css" />
-</head>
-
-<body>
-  <canvas id="main" class="canvas-style" height="700"></canvas>
-  <div class="control area options">
-    <button onclick="" type="button" class="btn btn-primary start_btn">Start</button>
-    <p>Options</p>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="basic-addon1">Mass</span>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+      <div class="navbar navbar-expand-lg navbar-dark">
+        <h1 class="navbar-brand">
+          <!-- Title of Website -->
+          Incline Ramp Simulation 
+        </h1>
       </div>
-      <input id="mass-input" type="number" class="form-control" placeholder="5" aria-label="Mass"
-        aria-describedby="basic-addon1">
-      <div class="input-group-append">
-        <span class="input-group-text" id="basic-addon1">mg</span>
+    
+    <div class="container">
+      <div class="canvas-div">
+        <img class="asset" src="https://user-images.githubusercontent.com/72632822/95772545-e9a72e80-0c8a-11eb-98b3-763919f40c6f.png">
+        <img class="asset" src="https://user-images.githubusercontent.com/72632822/95772547-e9a72e80-0c8a-11eb-93f1-d8eb0dccbb1b.png">
+        <img class="asset" src="https://user-images.githubusercontent.com/72632822/95772549-ea3fc500-0c8a-11eb-8354-327ce0fa61ba.png">
+        <img class="asset" src="https://user-images.githubusercontent.com/72632822/95772550-ea3fc500-0c8a-11eb-8ee8-cad18d134ae4.png">
+        <img class="asset" src="https://user-images.githubusercontent.com/72632822/95772552-ea3fc500-0c8a-11eb-8bb7-971cdd3b04ac.png">
+        <img class="asset" src="https://user-images.githubusercontent.com/72632822/95772553-ead85b80-0c8a-11eb-9b59-e062e56d8e4c.png">
+        <img class="asset"
+        src="https://i.pinimg.com/originals/7d/bd/50/7dbd5062f6c0efb48cb57b7d970a5106.png"
+      <canvas>
+        
+      </canvas>
       </div>
-    </div>
-    <input id="mass-input" type="number" class="form-control" placeholder="5" aria-label="Mass"
-      aria-describedby="basic-addon1">
-    <div class="input-group-append">
-      <span class="input-group-text" id="basic-addon1">mg</span>
-    </div>
-  </div>
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="basic-addon1">Angle of incline</span>
-    </div>
-    <input id="angle-input" type="number" class="form-control" placeholder="15" aria-label="angle"
-      aria-describedby="basic-addon1">
-    <div class="input-group-append">
-      <span class="input-group-text" id="basic-addon1">degrees</span>
-    </div>
-  </div>
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="basic-addon1">Coefficient of Friction</span>
-    </div>
-    <input id="coeeficient-input" type="number" class="form-control" placeholder="0.3" aria-label="friction"
-      aria-describedby="basic-addon1">
-  </div>
-  </div>
-  </div>
+      <div class="card settings">
+        <div class="card-body">
+        <h2 class="card-title">Settings</h2>
+        <form>
+          
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Weight</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="range" name="Weight" min="0" max="1000" id="weight">
+              <span class="font-weight-bold text-primary ml-2 valueSpan2" id="weightLabel">51</span><span class="blue"> g</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Angle</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="range" name="angle" step="0.01" min="0" max="90" id="angle">
+              <span class="font-weight-bold text-primary ml-2 valueSpan2" id="angleLabel">51</span><span></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <label>Friction</label>
+            </div>
+            <div class="col-sm-6">
+              <input type="range" name="friction" step="0.001" min="0" max="1" id="friction">
+              <span class="font-weight-bold text-primary ml-2 valueSpan2" id="frictionLabel">51</span>
+              <span></span>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-sm-6">
+          </div>
+          <div class="col-sm-6">
+            <button class="btn btn-success" type="submit" id="custom">Start</button>
+          </div>
+        </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
 
-  <script src="script.js"></script>
-  <script src="logic.js"></script>
 
-</body>
+        </form>
+        </div>
+      </div>
+      
+    </div>
+    
 
+    <script src="script.js">
+
+    </script>
+  </body>
 </html>
