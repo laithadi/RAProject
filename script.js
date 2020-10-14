@@ -89,12 +89,11 @@ function positionRamp() {
 
   var angle = document.getElementById("angle-input").value;
 
-
   var image2 = new Image();
 
   image2.src = 'assets/small-block.png';
 
-  drawRotatedImage(ctx, image2, 200, 520, 900, 120, angle);
+  drawRotatedImage(ctx, image2, 100, 520, 900, 120, angle);
 
   requestAnimationFrame(positionRamp);
 }
