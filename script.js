@@ -19,7 +19,7 @@ function init() {
 // --------------------------------------------------
 
 function update() {
-
+  draw(ctx, image);
 };
 
 // --------------------------------------------------
@@ -54,6 +54,8 @@ function drawRotatedImage(ctx, image, x, y, width, height, rotation){
 // --------------------------------------------------
 
 function draw(ctx, image){
+  var uk = Number(document.getElementById("coeeficient-input"));
+
   // If the image is not ready, wait and try again in
   // approx 50 milliseconds
   if (!image.complete){
@@ -62,9 +64,9 @@ function draw(ctx, image){
     }, 50);
     return;
   }
-  drawRotatedImage(ctx, image, 100, 520, 900, 120, angle);
+  drawRotatedImage(ctx, image, 100, 520, 900, 120, uk);
   // Basic image draw
-  ctx.drawImage(image, 100, 520, 900, 120);
+  //ctx.drawImage(image, 100, 520, 900, 120);
 }
 
 // --------------------------------------------------
@@ -76,6 +78,7 @@ var image = new Image();
 
 // Set the image source and start loading
 image.src = 'assets/big-block.png';
+
 
 // Attempt to draw the image
 draw(ctx, image);

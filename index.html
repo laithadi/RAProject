@@ -14,7 +14,7 @@
       <canvas id="main" class="canvas-style" height="700"></canvas>
 
       <div class="control area options">
-        <button onclick="draw()" type="button" class="btn btn-primary start_btn">Start</button>
+        <button onclick="update()" type="button" class="btn btn-primary start_btn">Start</button>
         <p>Options</p>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -29,7 +29,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Angle of incline</span>
           </div>
-          <input id="angle-input" type="number" class="form-control" placeholder="15" aria-label="angle" aria-describedby="basic-addon1">
+          <input id="angle-input" type="number" class="form-control" placeholder="15" aria-label="angle" aria-describedby="basic-addon1" value="10">
           <div class="input-group-append">
             <span class="input-group-text" id="basic-addon1">degrees</span>
           </div>
@@ -38,7 +38,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Coefficient of Friction</span>
           </div>
-          <input id= "coeeficient-input" type="number" class="form-control" placeholder="0.3" aria-label="friction" aria-describedby="basic-addon1">
+          <input id= "coeeficient-input" type="number" class="form-control" placeholder="0.3" aria-label="friction" aria-describedby="basic-addon1" value="0.0">
         </div>
       </div>
     </div>
