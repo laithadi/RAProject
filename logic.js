@@ -1,9 +1,13 @@
-function logic() {
+var object = document.getElementById('block');
+
+function moveObjectDownRamp() {
 
     // set the varibles
     var mass = document.getElementById("mass-input").value;
     var angle = document.getElementById("angle-input").value;
     var uk = document.getElementById("coeeficient-input").value;
+
+    object.style.left = currentPos + "px";
 
     var g = 9.8; //Acceleration of gravity
     var a = 0; //Acceleration of the block
@@ -12,16 +16,11 @@ function logic() {
 
     paraForce = mass * g * Math.sin(angle); // Parallel force acting on the block
     perpForce = mass * g * Math.cos(angle); // Perpendicular force acting on the block
-    // the position of inlcine at the BOTTOM
-    // the position of inlcine at the TOP
-    // mass
-    // angle of incline
-    // coefficient of friction
-    // starting position of object
 
     // if the object is not at the bottom of the ramp, move the object
-    if (true) {
+    if (Math.abs(currentPos) >= 900) {
         // equation for the velocity of the object - to increment the speed
+        currentPos += -100;
     }
 
 
