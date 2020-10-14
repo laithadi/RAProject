@@ -10,17 +10,17 @@
   <body>
     <div class="container">
       <h1>Ramp Simulation</h1>
-      
+
       <canvas id="main" class="canvas-style" height="700"></canvas>
-      
+
       <div class="control area options">
-        <button type="button" class="btn btn-primary start_btn">Start</button>
+        <button onclick="logic()" type="button" class="btn btn-primary start_btn">Start</button>
         <p>Options</p>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Mass</span>
           </div>
-          <input type="text" class="form-control" placeholder="5" aria-label="Mass" aria-describedby="basic-addon1">
+          <input id = "mass-input" type="number" class="form-control" placeholder="5" aria-label="Mass" aria-describedby="basic-addon1">
           <div class="input-group-append">
             <span class="input-group-text" id="basic-addon1">mg</span>
           </div>
@@ -48,5 +48,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <script src="script.js"></script>
+    <script src="logic.js"></script>
   </body>
 </html>
