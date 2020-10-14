@@ -29,7 +29,7 @@ setSlider();
 var canvas = document.querySelector('canvas');
 var c = canvas.getContext('2d');
 
-// canvas.height = window.innerHeight;
+canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
 // // placing the base block in the canvas
@@ -56,6 +56,7 @@ const drawRect = (x, y, width, height) => {
 const drawLine = (originX, originY, destX, destY) => {
   c.beginPath();
   c.moveTo(originX, originY);
+  c.lineWidth = 10;
   c.lineTo(destX, destY);
   c.strokeStyle = "#fa34a3"
   c.stroke();
@@ -67,6 +68,9 @@ const drawCircle = (x, y, r) => {
   c.strokeStyle = 'blue';
   c.stroke();
 }
+
+drawLine(200, 300, 300, 400);
+
 //---------------------------
 // Functions to animate shapes
 //---------------------------
@@ -78,7 +82,7 @@ function animate () {
   ctx.clearRect(0, 0, innerWidth, innerHeight);
   drawRect(x, y, 600, 100);
 
-  if (x + 100 > innerWidth || x + 600 < 0)
+  if (x + 100 > innerWidth || x + 100 < 0)
     dx = -dx;
 
   x += dx;
