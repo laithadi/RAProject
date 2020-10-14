@@ -5,6 +5,24 @@ canvas.width  = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 
 // --------------------------------------------------
+// Starting point of the simulation
+// set up timer and other initialization features
+// --------------------------------------------------
+
+function init() {
+  setInterval(update, 1000/60); // 60 frames per second
+}
+
+// --------------------------------------------------
+// This method will be ran once per frame to determine
+// the position of the block
+// --------------------------------------------------
+
+function update() {
+
+};
+
+// --------------------------------------------------
 // Generic method to draw an image rotated on its
 // midpoint.
 // --------------------------------------------------
@@ -36,7 +54,6 @@ function drawRotatedImage(ctx, image, x, y, width, height, rotation){
 // --------------------------------------------------
 
 function draw(ctx, image){
-
   // If the image is not ready, wait and try again in
   // approx 50 milliseconds
   if (!image.complete){
@@ -45,7 +62,7 @@ function draw(ctx, image){
     }, 50);
     return;
   }
-
+  drawRotatedImage(ctx, image, 100, 520, 900, 120, angle);
   // Basic image draw
   ctx.drawImage(image, 100, 520, 900, 120);
 }
