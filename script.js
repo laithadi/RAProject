@@ -40,7 +40,7 @@ c.drawImage(BBImg, 50, 600);
 // placing the moving ramp
 var SBImg = new Image();
 SBImg.src = 'assets/small-block.png';
-c.drawImage(SBImg, 50, 300);
+c.drawImage(SBImg, 50, 600);
 
 //---------------------------
 // Functions to draw shapes
@@ -49,23 +49,23 @@ c.drawImage(SBImg, 50, 300);
 // the ramp and fill it with the image of wood
 //---------------------------
 const drawRect = (x, y, width, height) => {
-  ctx.fillStyle = 'rgba(255, 0, 0, 0.1)'
-  ctx.fillRect(x, y, width, height);
+  c.fillStyle = 'rgba(255, 0, 0, 0.1)'
+  c.fillRect(x, y, width, height);
 }
 
 const drawLine = (originX, originY, destX, destY) => {
-  ctx.beginPath();
-  ctx.moveTo(originX, originY);
-  ctx.lineTo(destX, destY);
-  ctx.strokeStyle = "#fa34a3"
-  ctx.stroke();
+  c.beginPath();
+  c.moveTo(originX, originY);
+  c.lineTo(destX, destY);
+  c.strokeStyle = "#fa34a3"
+  c.stroke();
 }
 
 const drawCircle = (x, y, r) => {
-  ctx.beginPath();
-  ctx.arc(x, y, r, 0, Math.PI * 2, false);
-  ctx.strokeStyle = 'blue';
-  ctx.stroke();
+  c.beginPath();
+  c.arc(x, y, r, 0, Math.PI * 2, false);
+  c.strokeStyle = 'blue';
+  c.stroke();
 }
 
 // //---------------------------
