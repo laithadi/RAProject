@@ -5,6 +5,24 @@ canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
 
 // --------------------------------------------------
+// Starting point of the simulation
+// set up timer and other initialization features
+// --------------------------------------------------
+
+function init() {
+  setInterval(update, 1000 / 60); // 60 frames per second
+}
+
+// --------------------------------------------------
+// This method will be ran once per frame to determine
+// the position of the block
+// --------------------------------------------------
+
+function update() {
+  draw(ctx, image);
+};
+
+// --------------------------------------------------
 // Generic method to draw an image rotated on its
 // midpoint.
 // --------------------------------------------------
@@ -36,6 +54,7 @@ function drawRotatedImage(ctx, image, x, y, width, height, rotation) {
 // --------------------------------------------------
 
 function draw(ctx, image) {
+  var uk = Number(document.getElementById("coeeficient-input"));
 
   // If the image is not ready, wait and try again in
   // approx 50 milliseconds
@@ -45,9 +64,9 @@ function draw(ctx, image) {
     }, 50);
     return;
   }
-
+  drawRotatedImage(ctx, image, 100, 520, 900, 120, uk);
   // Basic image draw
-  ctx.drawImage(image, 100, 520, 900, 120);
+  //ctx.drawImage(image, 100, 520, 900, 120);
 }
 
 // --------------------------------------------------
@@ -59,6 +78,7 @@ var image = new Image();
 
 // Set the image source and start loading
 image.src = 'assets/big-block.png';
+
 
 // Attempt to draw the image
 draw(ctx, image);
