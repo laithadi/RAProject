@@ -39,3 +39,4 @@ c.drawImage(BBImg, 50, 600);
 var SBImg = new Image();
 SBImg.src = 'assets/small-block.png';
 c.drawImage(SBImg, 50, 300);
+
