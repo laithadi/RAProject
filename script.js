@@ -1,36 +1,18 @@
 var canvas = document.querySelector('canvas');
 var ctx = canvas.getContext('2d');
 
-canvas.width  = canvas.offsetWidth;
+canvas.width = canvas.offsetWidth;
 canvas.height = canvas.offsetHeight;
-
-// --------------------------------------------------
-// Starting point of the simulation
-// set up timer and other initialization features
-// --------------------------------------------------
-
-function init() {
-  setInterval(update, 1000/60); // 60 frames per second
-}
-
-// --------------------------------------------------
-// This method will be ran once per frame to determine
-// the position of the block
-// --------------------------------------------------
-
-function update() {
-
-};
 
 // --------------------------------------------------
 // Generic method to draw an image rotated on its
 // midpoint.
 // --------------------------------------------------
 
-function drawRotatedImage(ctx, image, x, y, width, height, rotation){
+function drawRotatedImage(ctx, image, x, y, width, height, rotation) {
 
   // Cache calculation for half width and height
-  var halfWidth  = width  / 2;
+  var halfWidth = width / 2;
   var halfHeight = height / 2;
 
   // Save canvas context state
@@ -53,16 +35,17 @@ function drawRotatedImage(ctx, image, x, y, width, height, rotation){
 // Wrap drawing operation in a method
 // --------------------------------------------------
 
-function draw(ctx, image){
+function draw(ctx, image) {
+
   // If the image is not ready, wait and try again in
   // approx 50 milliseconds
-  if (!image.complete){
-    setTimeout(function(){
+  if (!image.complete) {
+    setTimeout(function () {
       draw(ctx, image);
     }, 50);
     return;
   }
-  drawRotatedImage(ctx, image, 100, 520, 900, 120, angle);
+
   // Basic image draw
   ctx.drawImage(image, 100, 520, 900, 120);
 }
@@ -79,3 +62,21 @@ image.src = 'assets/big-block.png';
 
 // Attempt to draw the image
 draw(ctx, image);
+
+
+// kinda displays the ramp with the updated angle 
+function positionRamp() {
+
+  var angle = document.getElementById("angle-input").value;
+
+
+  var image2 = new Image();
+
+  image2.src = 'assets/small-block.png';
+
+  drawRotatedImage(ctx, image2, 200, 520, 900, 120, angle);
+
+  requestAnimationFrame(positionRamp);
+}
+
+positionRamp()
