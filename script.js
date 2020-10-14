@@ -6,7 +6,7 @@ canvas.height = canvas.offsetHeight;
 
 // --------------------------------------------------
 // Generic method to draw an image rotated on its
-// midpoint. 
+// midpoint.
 // --------------------------------------------------
 
 function drawRotatedImage(ctx, image, x, y, width, height, rotation){
@@ -37,7 +37,7 @@ function drawRotatedImage(ctx, image, x, y, width, height, rotation){
 
 function draw(ctx, image){
 
-  // If the image is not ready, wait and try again in 
+  // If the image is not ready, wait and try again in
   // approx 50 milliseconds
   if (!image.complete){
     setTimeout(function(){
