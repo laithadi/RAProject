@@ -63,7 +63,7 @@ function draw(ctx, image) {
     return;
   }
   // Basic image draw
-  //ctx.drawImage(image, 100, 520, 900, 120);
+  ctx.drawImage(image, 100, 520, 900, 120);
 }
 
 // --------------------------------------------------
