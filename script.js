@@ -94,6 +94,7 @@ var bottomRightY = canvas.height;
 var jointX = 400;
 var jointY = bottomRightY - 200;
 var rampStandHeight = 0;
+var coords = (0, 0);
 function updateRamp() {
   c.clearRect(0, 0, innerWidth, innerHeight);
 
@@ -122,7 +123,7 @@ function updateRamp() {
   // //Draw rectangle at the top of the stand
   var width = 100;
   var height = 100;
-  drawRect(jointX, jointY - height, width, height, rampAngleRad)
+  coords = drawRect(jointX, jointY - height, width, height, rampAngleRad)
 }
 updateRamp();
 
@@ -164,7 +165,7 @@ function init() {
   animate();
 }
 
-// MOVING THE REC DOWN THE RAMP 
+// MOVING THE REC DOWN THE RAMP
 
 function moveObjectDownRamp() {
 
@@ -181,21 +182,21 @@ function moveObjectDownRamp() {
   Fg = mass * g * Math.sin(angle); // Parallel force acting on the block
   Fm = mass * g * Math.cos(angle); // Perpendicular force acting on the block
 
-  var initialX = jointX;
-  var initialY = jointY;
+  var initialX = coords[0];
+  var initialY = coords[1];
 
   const targetX = bottomRightX - 300;
   const targetY = bottomRightY;
 
   const thrust = 5;
 
-  const tx = targetX - jointX;
-  const ty = targetY - jointY;
+  var tx = targetX - initialX;
+  var ty = targetY - initialY;
 
-  const dist = Math.sqrt(tx * tx + ty * ty);
+  var dist = Math.sqrt(tx * tx + ty * ty);
 
-  const valX = (tx / dist) * thrust;
-  const valY = (ty / dist) * thrust;
+  var valX = (tx / dist) * thrust;
+  var valY = (ty / dist) * thrust;
 
   // if the object is not at the bottom of the ramp, move the object
   if ((Math.abs(initialX) >= (bottomRightX - 300)) || (Math.abs(initialY) >= (bottomRightY))) {
