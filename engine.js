@@ -39,7 +39,7 @@ World.add(world, [
 ]);
 
 World.add(world, [
-    Bodies.rectangle(0, 180, 1200, 20,
+    Bodies.rectangle(300, 180, 1200, 20,
       {
         isStatic: true,
         angle: Math.PI / 6,
