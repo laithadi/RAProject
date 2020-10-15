@@ -181,16 +181,16 @@ function moveObjectDownRamp() {
   Fg = mass * g * Math.sin(angle); // Parallel force acting on the block
   Fm = mass * g * Math.cos(angle); // Perpendicular force acting on the block
 
-  const initialX = jointX;
-  const initialY = jointY;
+  var initialX = jointX;
+  var initialY = jointY;
 
   const targetX = bottomRightX - 300;
   const targetY = bottomRightY;
 
   const thrust = 5;
 
-  const tx = targetX - initialX;
-  const ty = targetY - initialY;
+  const tx = targetX - jointX;
+  const ty = targetY - jointY;
 
   const dist = Math.sqrt(tx * tx + ty * ty);
 
