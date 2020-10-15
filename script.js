@@ -49,8 +49,7 @@ canvas.width = 1280;
 // the ramp and fill it with the image of wood
 //---------------------------
 
-
-const drawRect = (x, y, width, height, angle) => {
+export const drawRect = (x, y, width, height, angle) => {
   var translateFactorX = 0.0625;
   var cx = x + translateFactorX * width;
   var cy = y + height;
@@ -82,9 +81,14 @@ const drawCircle = (x, y, r) => {
 }
 
 
+//---------------------------
+// Functions to draw the ramp
+// Takes an input angle and rotates the
+// ramp relative to that angle
+//---------------------------
+
 var bottomRightX = canvas.width;
 var bottomRightY = canvas.height;
-console.log("h",canvas.width-300);
 var jointX = 400;
 var jointY = bottomRightY-200;
 var rampStandHeight = 0;
@@ -96,20 +100,21 @@ function updateRamp(){
 
     var rampAngleRad = degrees_to_radians(rampAngle);
 
-    var angleLineRatio = 1/(bottomRightX-300-jointX);
-    rampStandHeight = Math.tan(rampAngleRad) * 580;
+    //var angleLineRatio = 1/(bottomRightX-300-jointX);
+    var rampBase = 580;
+    rampStandHeight = Math.tan(rampAngleRad) * rampBase;
     var rampLength = 580/Math.cos(rampAngleRad);
-
-    console.log("ramp stand height", rampStandHeight)
-    console.log("ramp length", rampLength)
+    // if (rampAngle > 45)
+    // rampBottom -= jointY;
 
     jointY = canvas.height - rampStandHeight;
+    console.log(jointY);
 
     //ramp
     drawLine(bottomRightX-300, bottomRightY, jointX, jointY);
 
     //ramp stand
-    drawLine(jointX, jointY-4.55, 400, 10000);
+    drawLine(jointX, jointY-4.55, jointX, bottomRightY);
     c.save();
 
     //Draw rectangle at the top of the stand
@@ -124,7 +129,7 @@ updateRamp();
 drawLine(bottomRightX-300, bottomRightY, jointX, jointY);
 
 //ramp stand
-drawLine(jointX, jointY-4.55, 500, 10000);
+//drawLine(jointX, jointY-4.55, 500, 10000);
 
 // drawCircle(1000, bottomRightY-300,100);
 
