@@ -203,8 +203,8 @@ function moveObjectDownRamp() {
   // if the object is not at the bottom of the ramp, move the object
   if ((Math.abs(initialX) >= (bottomRightX - 300)) || (Math.abs(initialY) >= (bottomRightY))) {
     // equation for the velocity of the object - to increment the speed
-    initialX += 5;
-    initialY += 5;
+    initialX += valX;
+    initialY += valY;
   }
   // console.log(coords[0]);
   // console.log(coords[1]);
