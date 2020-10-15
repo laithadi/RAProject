@@ -119,10 +119,10 @@ function updateRamp() {
   drawLine(jointX, jointY - 4.55, jointX, bottomRightY);
   c.save();
 
-  //Draw rectangle at the top of the stand
+  // //Draw rectangle at the top of the stand
   var width = 100;
   var height = 100;
-  var coordinates = drawRect(jointX, jointY - height, width, height, rampAngleRad)
+  drawRect(jointX, jointY - height, width, height, rampAngleRad)
 }
 updateRamp();
 
@@ -146,7 +146,7 @@ var dy = 3;
 
 function animate() {
   c.clearRect(0, 0, innerWidth, innerHeight);
-  drawRect(x, y, 600, 100);
+  // const rect = drawRect(x, y, 600, 100);
 
   if (x + 100 > innerWidth || x + 100 < 0)
     dx = -dx;
@@ -173,22 +173,24 @@ function moveObjectDownRamp() {
   var angle = document.getElementById("angle").value;
   var uk = document.getElementById("friction").value;
 
-  object.style.left = currentPos + "px";
-
   var g = 9.8; //Acceleration of gravity
   var a = 0; //Acceleration of the block
 
   a = g * (Math.sin(angle) - uk * Math.cos(angle));
 
   Fg = mass * g * Math.sin(angle); // Parallel force acting on the block
-  perpForce = mass * g * Math.cos(angle); // Perpendicular force acting on the block
+  Fm = mass * g * Math.cos(angle); // Perpendicular force acting on the block
+
+  const initialX = jointX;
+  const initialY = jointY;
+
 
   // if the object is not at the bottom of the ramp, move the object
-  if (Math.abs(currentPos) >= 900) {
+  if ((Math.abs(initialX) >= (bottomRightX - 300)) || (Math.abs(initialY) >= (bottomRightY))) {
     // equation for the velocity of the object - to increment the speed
-    currentPos += -100;
+    initialX += 5;
+    initialY += 5;
   }
-
 
   // loop this function to show animation
   requestAnimationFrame(moveObjectDownRamp)
