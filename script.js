@@ -49,7 +49,7 @@ canvas.width = 1280;
 // the ramp and fill it with the image of wood
 //---------------------------
 
-export const drawRect = (x, y, width, height, angle) => {
+const drawRect = (x, y, width, height, angle) => {
   var translateFactorX = 0.0625;
   var cx = x + translateFactorX * width;
   var cy = y + height;
