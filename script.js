@@ -167,12 +167,15 @@ function init() {
 
 // MOVING THE REC DOWN THE RAMP
 
+console.log(coords[0]);
+console.log(coords[1]);
+
 function moveObjectDownRamp() {
 
   // set the varibles
-  var mass = document.getElementById("mass").value;
-  var angle = document.getElementById("angle").value;
-  var uk = document.getElementById("friction").value;
+  var angle = rampAngle;
+  var mass = weightSlider.value;
+  var uk = frictionSlider.value;
 
   var g = 9.8; //Acceleration of gravity
   var a = 0; //Acceleration of the block
@@ -201,8 +204,8 @@ function moveObjectDownRamp() {
   // if the object is not at the bottom of the ramp, move the object
   if ((Math.abs(initialX) >= (bottomRightX - 300)) || (Math.abs(initialY) >= (bottomRightY))) {
     // equation for the velocity of the object - to increment the speed
-    initialX += valX;
-    initialY += valY;
+    initialX += 5;
+    initialY += 5;
   }
 
   // loop this function to show animation
