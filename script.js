@@ -184,14 +184,28 @@ function moveObjectDownRamp() {
   const initialX = jointX;
   const initialY = jointY;
 
+  const targetX = bottomRightX - 300;
+  const targetY = bottomRightY;
+
+  const thrust = 5;
+
+  const tx = targetX - initialX;
+  const ty = targetY - initialY;
+
+  const dist = Math.sqrt(tx * tx + ty * ty);
+
+  const valX = (tx / dist) * thrust;
+  const valY = (ty / dist) * thrust;
 
   // if the object is not at the bottom of the ramp, move the object
   if ((Math.abs(initialX) >= (bottomRightX - 300)) || (Math.abs(initialY) >= (bottomRightY))) {
     // equation for the velocity of the object - to increment the speed
-    initialX += 5;
-    initialY += 5;
+    initialX += valX;
+    initialY += valY;
   }
 
   // loop this function to show animation
   requestAnimationFrame(moveObjectDownRamp)
 }
+
+moveObjectDownRamp();
