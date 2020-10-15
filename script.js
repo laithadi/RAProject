@@ -95,13 +95,17 @@ var jointX = 400;
 var jointY = bottomRightY - 200;
 var rampStandHeight = 0;
 var coords = [0, 0];
+
+var initialX = jointX;
+var initialY = jointY;
+
+var rampAngleRad = degrees_to_radians(rampAngle);
+
 function updateRamp() {
   c.clearRect(0, 0, innerWidth, innerHeight);
 
   var topAngle = 90 - rampAngle;
   var topAngleRad = degrees_to_radians(topAngle);
-
-  var rampAngleRad = degrees_to_radians(rampAngle);
 
   //var angleLineRatio = 1/(bottomRightX-300-jointX);
   var rampBase = 580;
@@ -111,8 +115,6 @@ function updateRamp() {
   // rampBottom -= jointY;
 
   jointY = canvas.height - rampStandHeight;
-  console.log(jointY);
-
   //ramp
   drawLine(bottomRightX - 300, bottomRightY, jointX, jointY);
 
@@ -120,13 +122,20 @@ function updateRamp() {
   drawLine(jointX, jointY - 4.55, jointX, bottomRightY);
   c.save();
 
-  // //Draw rectangle at the top of the stand
-  var width = 100;
-  var height = 100;
-  coords = drawRect(jointX, jointY - height, width, height, rampAngleRad)
+  // var width = 100;
+  // var height = 100;
+  // coords = drawRect(jointX, jointY - height, width, height, rampAngleRad)
 }
 updateRamp();
 
+function drawAnimatedRect (x, y) {
+  //Draw rectangle at the top of the stand
+  var width = 100;
+  var height = 100;
+  coords = drawRect(x, y - height, width, height, rampAngleRad)
+}
+
+drawAnimatedRect(jointX, jointY);
 
 //ramp
 drawLine(bottomRightX - 300, bottomRightY, jointX, jointY);
@@ -168,9 +177,12 @@ function init() {
 // MOVING THE REC DOWN THE RAMP
 
 
+var initialX = coords[0];
+var initialY = coords[1];
 
 function moveObjectDownRamp() {
-  //c.clearRect(0, 0, innerWidth, innerHeight);
+  c.clearRect(0, 0, innerWidth, innerHeight);
+
   // set the varibles
   var angle = degrees_to_radians(rampAngle);
   var mass = weightSlider.value;
@@ -184,11 +196,8 @@ function moveObjectDownRamp() {
   Fg = mass * g * Math.sin(angle); // Parallel force acting on the block
   Fm = mass * g * Math.cos(angle); // Perpendicular force acting on the block
 
-  var initialX = coords[0];
-  var initialY = coords[1];
-
-  const targetX = bottomRightX - 300;
-  const targetY = bottomRightY;
+  var targetX = bottomRightX - 300;
+  var targetY = bottomRightY;
 
   const thrust = 5;
 
@@ -208,8 +217,8 @@ function moveObjectDownRamp() {
   }
   // console.log(coords[0]);
   // console.log(coords[1]);
-
-  //drawRect(initialX, initialY, 100, 100, angle);
+  updateRamp();
+  drawAnimatedRect(initialX, initialY);
 
   // loop this function to show animation
   requestAnimationFrame(moveObjectDownRamp)
