@@ -1,7 +1,7 @@
 var object = document.getElementById('block');
 var script = require('./script');
 
-script.drawRect;
+var coordinates = script.drawRect;
 
 function moveObjectDownRamp() {
 

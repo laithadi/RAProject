@@ -62,6 +62,7 @@ export const drawRect = (x, y, width, height, angle) => {
 
   c.fillRect(x, y, width, height);
   c.restore();
+  return (x, y);
 }
 
 const drawLine = (originX, originY, destX, destY) => {
@@ -120,7 +121,7 @@ function updateRamp(){
     //Draw rectangle at the top of the stand
     var width = 100;
     var height = 100;
-    drawRect(jointX, jointY-height, width, height, rampAngleRad)
+    var coordinates = drawRect(jointX, jointY-height, width, height, rampAngleRad)
   }
 updateRamp();
 
