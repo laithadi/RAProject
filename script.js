@@ -42,16 +42,6 @@ var c = canvas.getContext('2d');
 canvas.height = 720;
 canvas.width = 1280;
 
-// // placing the base block in the canvas
-// var BBImg = new Image();
-// BBImg.src = 'assets/big-block.png';
-// c.drawImage(BBImg, 50, 600);
-
-// // placing the moving ramp
-// var SBImg = new Image();
-// SBImg.src = 'assets/small-block.png';
-// c.drawImage(SBImg, 50, 300);
-
 //---------------------------
 // Functions to draw shapes
 // Useful to animate later
@@ -61,14 +51,16 @@ canvas.width = 1280;
 
 
 const drawRect = (x, y, width, height, angle) => {
-  var cx = x + 0.0625 * width;
+  var translateFactorX = 0.0625;
+  var cx = x + translateFactorX * width;
   var cy = y + height;
 
   c.fillStyle = "#008080";
+
   c.translate(cx, cy);
-  //c.translate( x, y );
   c.rotate(angle);
   c.translate(-cx, -cy);
+
   c.fillRect(x, y, width, height);
   c.restore();
 }
@@ -120,7 +112,10 @@ function updateRamp(){
     drawLine(jointX, jointY-4.55, 400, 10000);
     c.save();
 
-    drawRect(jointX, jointY-100, 100, 100, rampAngleRad)
+    //Draw rectangle at the top of the stand
+    var width = 100;
+    var height = 100;
+    drawRect(jointX, jointY-height, width, height, rampAngleRad)
   }
 updateRamp();
 
