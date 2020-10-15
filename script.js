@@ -164,6 +164,8 @@ function init() {
   animate();
 }
 
+// MOVING THE REC DOWN THE RAMP 
+
 function moveObjectDownRamp() {
 
   // set the varibles
