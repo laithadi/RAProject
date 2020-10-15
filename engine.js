@@ -16,7 +16,7 @@ var render = Render.create({
     engine: engine,
     options: {
         width: window.innerWidth,
-        height: window.innerHeight - 100,
+        height: window.innerHeight,
         showVelocity: true,
         wireframes: false,
         background: 'rgb(255,255,255)'
