@@ -1,6 +1,7 @@
-const setSlider = () => {
+// const setSlider = () => {
   var weightSlider = document.getElementById("weight");
   var angleSlider = document.getElementById("angle");
+  var rampAngle = angleSlider.value;
   var frictionSlider = document.getElementById("friction");
   var sliders = [weightSlider, angleSlider, frictionSlider]
 
@@ -19,18 +20,27 @@ const setSlider = () => {
   }
   sliders[1].oninput = function() {
     labels[1].innerHTML = (this.value);
+    rampAngle = angleSlider.value;
+    console.log(this.value)
+    updateRamp();
   }
   sliders[2].oninput = function() {
     labels[2].innerHTML = (this.value);
   }
+// }
+
+// setSlider();
+function degrees_to_radians(degrees)
+{
+  var pi = Math.PI;
+  return degrees * (pi/180);
 }
-setSlider();
 
 var canvas = document.querySelector('canvas');
 var c = canvas.getContext('2d');
 
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
+canvas.height = 720;
+canvas.width = 1280;
 
 // // placing the base block in the canvas
 // var BBImg = new Image();
@@ -48,8 +58,10 @@ canvas.width = window.innerWidth;
 // Plan: draw a rectangle to represent
 // the ramp and fill it with the image of wood
 //---------------------------
+
+
 const drawRect = (x, y, width, height) => {
-  c.fillStyle = "#fa34a3"
+  c.fillStyle = "#008080"
   c.fillRect(x, y, width, height);
 }
 
@@ -58,7 +70,7 @@ const drawLine = (originX, originY, destX, destY) => {
   c.moveTo(originX, originY);
   c.lineWidth = 10;
   c.lineTo(destX, destY);
-  c.strokeStyle = "#fa34a3"
+  c.strokeStyle = "#008080"
   c.stroke();
 }
 
@@ -69,7 +81,47 @@ const drawCircle = (x, y, r) => {
   c.stroke();
 }
 
-drawLine(200, 300, 300, 400);
+
+var bottomRightX = canvas.width;
+var bottomRightY = canvas.height;
+console.log("h",canvas.width-300);
+var jointX = 400;
+var jointY = bottomRightY-200;
+var rampStandHeight = 0;
+function updateRamp(){
+    c.clearRect(0, 0, innerWidth, innerHeight);
+
+    var topAngle = 90 - rampAngle;
+    var topAngleRad = degrees_to_radians(topAngle);
+
+    var rampAngleRad = degrees_to_radians(rampAngle);
+
+    var angleLineRatio = 1/(bottomRightX-300-jointX);
+    rampStandHeight = Math.tan(rampAngleRad) * 580;
+    var rampLength = 580/Math.cos(rampAngleRad);
+
+    console.log("ramp stand height", rampStandHeight)
+    console.log("ramp length", rampLength)
+
+    jointY = canvas.height - rampStandHeight;
+
+    //ramp
+    drawLine(bottomRightX-300, bottomRightY, jointX, jointY);
+
+    //ramp stand
+    drawLine(jointX, jointY-4.55, 400, 10000);
+  }
+updateRamp();
+
+
+//ramp
+drawLine(bottomRightX-300, bottomRightY, jointX, jointY);
+
+//ramp stand
+drawLine(jointX, jointY-4.55, 500, 10000);
+
+// drawCircle(1000, bottomRightY-300,100);
+
 
 //---------------------------
 // Functions to animate shapes
@@ -78,8 +130,9 @@ var x = 200;
 var y = 300;
 var dx = 3;
 var dy = 3;
+
 function animate () {
-  ctx.clearRect(0, 0, innerWidth, innerHeight);
+  c.clearRect(0, 0, innerWidth, innerHeight);
   drawRect(x, y, 600, 100);
 
   if (x + 100 > innerWidth || x + 100 < 0)
@@ -94,5 +147,6 @@ function animate () {
   requestAnimationFrame(animate);
 }
 
-animate();
-
+function init() {
+  animate();
+}

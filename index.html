@@ -2,34 +2,35 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>repl.it</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link href="style.css" rel="stylesheet" type="text/css" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	 crossorigin="anonymous">
+	<link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  <div class="navbar navbar-expand-lg navbar-dark">
-    <h1 class="navbar-brand">
-      <!-- Title of Website -->
-      Incline Ramp Simulation
-    </h1>
-  </div>
+	<div class="navbar navbar-expand-lg navbar-dark">
+		<h1 class="navbar-brand">
+			<!-- Title of Website -->
+			Incline Ramp Simulation
+		</h1>
+	</div>
+    <canvas id="main" class="canvas-style">
 
-  <div class="container">
-    <div class="canvas-div">
-      <img id="bigblock" class="asset" src="assets/big-block.png">
+    </canvas>
+	<div class="container">
+		<div class="canvas-div">
+			<!-- <img id="bigblock" class="asset" src="assets/big-block.png">
       <img id="protractor" class="asset" src="assets/protractor.png">
       <img id="smallblock" class="asset" src="assets/small-block.png">
       <img id="scale" class="asset" src="assets/scale.png">
       <img id="pivot" class="asset" src="assets/pivot.png">
-      <img id="block" class="asset" src="assets/block.png">
-      <canvas id="main" class="canvas-style" height="700">
+      <img id="block" class="asset" src="assets/block.png"> -->
 
-      </canvas>
     </div>
+
     <div class="card settings">
       <div class="card-body">
         <h2 class="card-title">Settings</h2>
@@ -41,8 +42,8 @@
             </div>
             <div class="col-sm-6">
               <input type="range" name="Weight" min="0" max="1000" id="weight">
-              <span class="font-weight-bold text-primary ml-2 valueSpan2" id="weightLabel">51</span><span class="blue">
-                g</span>
+              <span class="font-weight-bold text-primary ml-2 valueSpan2" id="weightLabel">51</span>
+              <span class="blue">g</span>
             </div>
           </div>
           <div class="row">
@@ -51,7 +52,8 @@
             </div>
             <div class="col-sm-6">
               <input type="range" name="angle" step="0.01" min="0" max="90" id="angle">
-              <span class="font-weight-bold text-primary ml-2 valueSpan2" id="angleLabel">51</span><span></span>
+              <span class="font-weight-bold text-primary ml-2 valueSpan2" id="angleLabel">51</span>
+              <span class="blue">°</span>
             </div>
           </div>
           <div class="row">
@@ -61,7 +63,7 @@
             <div class="col-sm-6">
               <input type="range" name="friction" step="0.001" min="0" max="1" id="friction">
               <span class="font-weight-bold text-primary ml-2 valueSpan2" id="frictionLabel">51</span>
-              <span></span>
+              <span class="blue"> μ</span>
             </div>
           </div>
           <div class="row">
@@ -71,19 +73,13 @@
               <button class="btn btn-success" type="submit" id="custom">Start</button>
             </div>
           </div>
-
-
-
         </form>
       </div>
     </div>
-
   </div>
 
-
   <script src="script.js">
-
   </script>
-</body>
 
+</body>
 </html>
