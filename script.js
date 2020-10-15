@@ -63,7 +63,7 @@ const drawRect = (x, y, width, height, angle) => {
 
   c.fillRect(x, y, width, height);
   c.restore();
-  return (x, y);
+  return [x, y];
 }
 
 const drawLine = (originX, originY, destX, destY) => {
@@ -94,7 +94,7 @@ var bottomRightY = canvas.height;
 var jointX = 400;
 var jointY = bottomRightY - 200;
 var rampStandHeight = 0;
-var coords = (0, 0);
+var coords = [0, 0];
 function updateRamp() {
   c.clearRect(0, 0, innerWidth, innerHeight);
 
