@@ -1,39 +1,40 @@
 // const setSlider = () => {
-  var weightSlider = document.getElementById("weight");
-  var angleSlider = document.getElementById("angle");
-  var rampAngle = angleSlider.value;
-  var frictionSlider = document.getElementById("friction");
-  var sliders = [weightSlider, angleSlider, frictionSlider]
+var weightSlider = document.getElementById("weight");
+var angleSlider = document.getElementById("angle");
+var rampAngle = angleSlider.value;
+var frictionSlider = document.getElementById("friction");
+var sliders = [weightSlider, angleSlider, frictionSlider]
 
 
-  var weightLabel = document.getElementById("weightLabel");
-  var angleLabel = document.getElementById("angleLabel");
-  var frictionLabel = document.getElementById("frictionLabel");
-  var labels = [weightLabel, angleLabel, frictionLabel]
 
-  for (var i = 0; i < sliders.length; i++) {
-    labels[i].innerHTML = sliders[i].value;
-  }
 
-  sliders[0].oninput = function() {
-    labels[0].innerHTML = this.value;
-  }
-  sliders[1].oninput = function() {
-    labels[1].innerHTML = (this.value);
-    rampAngle = angleSlider.value;
-    console.log(this.value)
-    updateRamp();
-  }
-  sliders[2].oninput = function() {
-    labels[2].innerHTML = (this.value);
-  }
+var weightLabel = document.getElementById("weightLabel");
+var angleLabel = document.getElementById("angleLabel");
+var frictionLabel = document.getElementById("frictionLabel");
+var labels = [weightLabel, angleLabel, frictionLabel]
+
+for (var i = 0; i < sliders.length; i++) {
+  labels[i].innerHTML = sliders[i].value;
+}
+
+sliders[0].oninput = function () {
+  labels[0].innerHTML = this.value;
+}
+sliders[1].oninput = function () {
+  labels[1].innerHTML = (this.value);
+  rampAngle = angleSlider.value;
+  console.log(this.value)
+  updateRamp();
+}
+sliders[2].oninput = function () {
+  labels[2].innerHTML = (this.value);
+}
 // }
 
 // setSlider();
-function degrees_to_radians(degrees)
-{
+function degrees_to_radians(degrees) {
   var pi = Math.PI;
-  return degrees * (pi/180);
+  return degrees * (pi / 180);
 }
 
 var canvas = document.querySelector('canvas');
@@ -84,41 +85,41 @@ const drawCircle = (x, y, r) => {
 
 var bottomRightX = canvas.width;
 var bottomRightY = canvas.height;
-console.log("h",canvas.width-300);
+console.log("h", canvas.width - 300);
 var jointX = 400;
-var jointY = bottomRightY-200;
+var jointY = bottomRightY - 200;
 var rampStandHeight = 0;
-function updateRamp(){
-    c.clearRect(0, 0, innerWidth, innerHeight);
+function updateRamp() {
+  c.clearRect(0, 0, innerWidth, innerHeight);
 
-    var topAngle = 90 - rampAngle;
-    var topAngleRad = degrees_to_radians(topAngle);
+  var topAngle = 90 - rampAngle;
+  var topAngleRad = degrees_to_radians(topAngle);
 
-    var rampAngleRad = degrees_to_radians(rampAngle);
+  var rampAngleRad = degrees_to_radians(rampAngle);
 
-    var angleLineRatio = 1/(bottomRightX-300-jointX);
-    rampStandHeight = Math.tan(rampAngleRad) * 580;
-    var rampLength = 580/Math.cos(rampAngleRad);
+  var angleLineRatio = 1 / (bottomRightX - 300 - jointX);
+  rampStandHeight = Math.tan(rampAngleRad) * 580;
+  var rampLength = 580 / Math.cos(rampAngleRad);
 
-    console.log("ramp stand height", rampStandHeight)
-    console.log("ramp length", rampLength)
+  console.log("ramp stand height", rampStandHeight)
+  console.log("ramp length", rampLength)
 
-    jointY = canvas.height - rampStandHeight;
+  jointY = canvas.height - rampStandHeight;
 
-    //ramp
-    drawLine(bottomRightX-300, bottomRightY, jointX, jointY);
+  //ramp
+  drawLine(bottomRightX - 300, bottomRightY, jointX, jointY);
 
-    //ramp stand
-    drawLine(jointX, jointY-4.55, 400, 10000);
-  }
+  //ramp stand
+  drawLine(jointX, jointY - 4.55, 400, 10000);
+}
 updateRamp();
 
 
 //ramp
-drawLine(bottomRightX-300, bottomRightY, jointX, jointY);
+drawLine(bottomRightX - 300, bottomRightY, jointX, jointY);
 
 //ramp stand
-drawLine(jointX, jointY-4.55, 500, 10000);
+drawLine(jointX, jointY - 4.55, 500, 10000);
 
 // drawCircle(1000, bottomRightY-300,100);
 
@@ -131,7 +132,7 @@ var y = 300;
 var dx = 3;
 var dy = 3;
 
-function animate () {
+function animate() {
   c.clearRect(0, 0, innerWidth, innerHeight);
   drawRect(x, y, 600, 100);
 
