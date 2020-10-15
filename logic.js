@@ -1,4 +1,7 @@
 var object = document.getElementById('block');
+var script = require('./script');
+
+script.drawRect;
 
 function moveObjectDownRamp() {
 
