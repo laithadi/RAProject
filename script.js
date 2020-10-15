@@ -167,8 +167,7 @@ function init() {
 
 // MOVING THE REC DOWN THE RAMP
 
-console.log(coords[0]);
-console.log(coords[1]);
+
 
 function moveObjectDownRamp() {
 
@@ -207,6 +206,8 @@ function moveObjectDownRamp() {
     initialX += 5;
     initialY += 5;
   }
+  // console.log(coords[0]);
+  // console.log(coords[1]);
 
   // loop this function to show animation
   requestAnimationFrame(moveObjectDownRamp)
