@@ -60,9 +60,17 @@ canvas.width = 1280;
 //---------------------------
 
 
-const drawRect = (x, y, width, height) => {
-  c.fillStyle = "#008080"
+const drawRect = (x, y, width, height, angle) => {
+  var cx = x + 0.0625 * width;
+  var cy = y + height;
+
+  c.fillStyle = "#008080";
+  c.translate(cx, cy);
+  //c.translate( x, y );
+  c.rotate(angle);
+  c.translate(-cx, -cy);
   c.fillRect(x, y, width, height);
+  c.restore();
 }
 
 const drawLine = (originX, originY, destX, destY) => {
@@ -110,6 +118,9 @@ function updateRamp(){
 
     //ramp stand
     drawLine(jointX, jointY-4.55, 400, 10000);
+    c.save();
+
+    drawRect(jointX, jointY-100, 100, 100, rampAngleRad)
   }
 updateRamp();
 
