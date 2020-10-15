@@ -3,9 +3,9 @@ var object = document.getElementById('block');
 function moveObjectDownRamp() {
 
     // set the varibles
-    var mass = document.getElementById("mass-input").value;
-    var angle = document.getElementById("angle-input").value;
-    var uk = document.getElementById("coeeficient-input").value;
+    var mass = document.getElementById("mass").value;
+    var angle = document.getElementById("angle").value;
+    var uk = document.getElementById("friction").value;
 
     object.style.left = currentPos + "px";
 
