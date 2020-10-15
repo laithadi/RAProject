@@ -170,9 +170,9 @@ function init() {
 
 
 function moveObjectDownRamp() {
-
+  //c.clearRect(0, 0, innerWidth, innerHeight);
   // set the varibles
-  var angle = rampAngle;
+  var angle = degrees_to_radians(rampAngle);
   var mass = weightSlider.value;
   var uk = frictionSlider.value;
 
@@ -208,6 +208,8 @@ function moveObjectDownRamp() {
   }
   // console.log(coords[0]);
   // console.log(coords[1]);
+
+  //drawRect(initialX, initialY, 100, 100, angle);
 
   // loop this function to show animation
   requestAnimationFrame(moveObjectDownRamp)
