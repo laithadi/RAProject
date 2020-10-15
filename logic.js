@@ -14,7 +14,7 @@ function moveObjectDownRamp() {
 
     a = g * (Math.sin(angle) - uk * Math.cos(angle));
 
-    paraForce = mass * g * Math.sin(angle); // Parallel force acting on the block
+    Fg = mass * g * Math.sin(angle); // Parallel force acting on the block
     perpForce = mass * g * Math.cos(angle); // Perpendicular force acting on the block
 
     // if the object is not at the bottom of the ramp, move the object
