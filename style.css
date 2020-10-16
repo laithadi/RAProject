@@ -1,27 +1,29 @@
 .asset {
-    width: 7rem;
-  }
-  .navbar {
-    background-color: black;
-  }
+  width: 7rem;
+}
+.navbar {
+  background-color: black;
+}
 
-  .container {
-    padding: 2rem;
-  }
-  .blue {
-    font-weight: 700;
-    color: #007bff;
-  }
+.container {
+  padding: 2rem;
+}
+.blue {
+  font-weight: 700;
+  color: #007bff;
+}
 
-  .settings {
-    margin-top: 2rem;
-  }
-  label {
-    font-weight: 500;
-  }
-
-#engine {
-  display:flex;
-  justify-content: center;
-  align-items: center;
+.settings {
+  margin-top: 2rem;
+}
+label {
+  font-weight: 500;
+}
+#engine{
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 800px;
 }
