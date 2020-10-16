@@ -1,9 +1,11 @@
 var weightSlider = document.getElementById("weight");
 var angleSlider = document.getElementById("angle");
-var rampAngle = angleSlider.value;
 var frictionSlider = document.getElementById("friction");
-var frictionInput = frictionSlider.value;
 var sliders = [weightSlider, angleSlider, frictionSlider]
+
+var rampAngle = angleSlider.value;
+var frictionInput = frictionSlider.value;
+var massInput = weightSlider.value;
 
 var weightLabel = document.getElementById("weightLabel");
 var angleLabel = document.getElementById("angleLabel");
@@ -15,7 +17,8 @@ for (var i = 0; i < sliders.length; i++) {
 }
 
 sliders[0].oninput = function () {
-  labels[0].innerHTML = this.value;
+  labels[0].innerHTML = (this.value);
+  massInput = weightSlider.value;
 }
 sliders[1].oninput = function () {
   labels[1].innerHTML = (this.value);
@@ -24,7 +27,6 @@ sliders[1].oninput = function () {
 sliders[2].oninput = function () {
   labels[2].innerHTML = (this.value);
   frictionInput = frictionSlider.value;
-  console.log(frictionSlider.value);
 }
 
 // setSlider();
@@ -90,7 +92,7 @@ function updateRamp() {
       {
         isStatic: true
       }),
-      Bodies.rectangle(300, 350, 1200, 20,
+      Bodies.rectangle(300, 350, 750, 20,
       {
           isStatic: true,
           angle: degrees_to_radians(rampAngle),
@@ -100,6 +102,7 @@ function updateRamp() {
       {
           friction: frictionInput,
           angle: degrees_to_radians(rampAngle),
+          mass: massInput,
       })
 
   ]);
