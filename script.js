@@ -1,18 +1,17 @@
-// const setSlider = () => {
+// values of the sliders 
 var weightSlider = document.getElementById("weight");
 var angleSlider = document.getElementById("angle");
 var rampAngle = angleSlider.value;
 var frictionSlider = document.getElementById("friction");
 var sliders = [weightSlider, angleSlider, frictionSlider]
 
-
-
-
+// labels for the inputs 
 var weightLabel = document.getElementById("weightLabel");
 var angleLabel = document.getElementById("angleLabel");
 var frictionLabel = document.getElementById("frictionLabel");
 var labels = [weightLabel, angleLabel, frictionLabel]
 
+//  this doesnt really do anything 
 for (var i = 0; i < sliders.length; i++) {
   labels[i].innerHTML = sliders[i].value;
 }
@@ -40,8 +39,8 @@ function degrees_to_radians(degrees) {
 var canvas = document.querySelector('canvas');
 var c = canvas.getContext('2d');
 
-canvas.height = 720;
-canvas.width = 1280;
+canvas.height = 500;
+canvas.width = 500;
 
 //---------------------------
 // Functions to draw shapes
@@ -128,7 +127,7 @@ function updateRamp() {
 }
 updateRamp();
 
-function drawAnimatedRect (x, y) {
+function drawAnimatedRect(x, y) {
   //Draw rectangle at the top of the stand
   var width = 100;
   var height = 100;
