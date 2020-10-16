@@ -75,17 +75,22 @@ const physicsWorld = () => {
     ]);
 
     World.add(world, [
-        Bodies.rectangle(0, 200, 1200, 20,
+        Bodies.rectangle(300, 350, 1200, 20,
         {
             isStatic: true,
             angle: degrees_to_radians(rampAngle),
             //angle: Math.PI / 6,
         }),
+        // Bodies.circle(0, 0, 40,
+        //     {
+        //         friction: 1,
+        //         angle: degrees_to_radians(rampAngle),
+        //     }),
         Bodies.rectangle(0, 0, 40, 40,
-            {
-                friction: 0.1,
-                angle: degrees_to_radians(rampAngle),
-            })
+        {
+            friction: 0.001,
+            angle: degrees_to_radians(rampAngle),
+        })
     ]);
 
     // World.add(world, [
