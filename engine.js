@@ -35,12 +35,12 @@ const physicsWorld = () => {
     }
 
     var Engine = Matter.Engine,
-    Render = Matter.Render,
-    Runner = Matter.Runner,
-    MouseConstraint = Matter.MouseConstraint,
-    Mouse = Matter.Mouse,
-    World = Matter.World,
-    Bodies = Matter.Bodies;
+        Render = Matter.Render,
+        Runner = Matter.Runner,
+        MouseConstraint = Matter.MouseConstraint,
+        Mouse = Matter.Mouse,
+        World = Matter.World,
+        Bodies = Matter.Bodies;
 
     // create engine
     var engine = Engine.create(),
@@ -48,11 +48,11 @@ const physicsWorld = () => {
 
     // create renderer
     var render = Render.create({
-        element: document.body,
+        element: document.getElementById("engine"),
         engine: engine,
         options: {
-            width: window.innerWidth,
-            height: window.innerHeight,
+            width: 600,
+            height: 800,
             showVelocity: true,
             wireframes: false,
             background: 'rgb(255,255,255)'
@@ -78,47 +78,15 @@ const physicsWorld = () => {
         Bodies.rectangle(300, 350, 1200, 20,
         {
             isStatic: true,
-            angle: degrees_to_radians(rampAngle),
-            //angle: Math.PI / 6,
+            //angle: degrees_to_radians(rampAngle),
+            angle: Math.PI / 6,
         }),
-        // Bodies.circle(0, 0, 40,
-        //     {
-        //         friction: 1,
-        //         angle: degrees_to_radians(rampAngle),
-        //     }),
         Bodies.rectangle(0, 0, 40, 40,
         {
             friction: 0.001,
-            angle: degrees_to_radians(rampAngle),
+            //angle: degrees_to_radians(rampAngle),
         })
     ]);
-
-    // World.add(world, [
-    //     Bodies.rectangle(300, 350, 700, 20, { isStatic: true, angle: Math.PI * 0.06 }),
-    //     Bodies.rectangle(300, 250, 40, 40, { friction: 0.0005 })
-    // ]);
-
-    // World.add(world, [
-    //     Bodies.rectangle(300, 520, 700, 20, { isStatic: true, angle: Math.PI * 0.06 }),
-    //     Bodies.rectangle(300, 430, 40, 40, { friction: 0 })
-    // ]);
-
-    // add mouse control
-    var mouse = Mouse.create(render.canvas),
-        mouseConstraint = MouseConstraint.create(engine, {
-            mouse: mouse,
-            constraint: {
-                stiffness: 0.2,
-                render: {
-                    visible: false
-                }
-            }
-        });
-
-    World.add(world, mouseConstraint);
-
-    // keep the mouse in sync with rendering
-    render.mouse = mouse;
 
     // fit the render viewport to the scene
     Render.lookAt(render, {
