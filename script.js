@@ -1,8 +1,21 @@
-// values of the sliders 
+// call on the canvas 
+var canvas = document.querySelector('canvas');
+var c = canvas.getContext('2d');
+
+function setup() {
+    canvas.height = 800;
+    canvas.width = 1700;
+    c.translate(1500, 790);
+}
+setup();
+
+// getting all the input variabels from user (mass, friction, weight)
 var weightSlider = document.getElementById("weight");
+var weight = weightSlider.value;
 var angleSlider = document.getElementById("angle");
-var rampAngle = angleSlider.value;
+var angle = angleSlider.value;
 var frictionSlider = document.getElementById("friction");
+var friction = frictionSlider.value;
 var sliders = [weightSlider, angleSlider, frictionSlider]
 
 // labels for the inputs 
@@ -11,216 +24,81 @@ var angleLabel = document.getElementById("angleLabel");
 var frictionLabel = document.getElementById("frictionLabel");
 var labels = [weightLabel, angleLabel, frictionLabel]
 
-//  this doesnt really do anything 
-for (var i = 0; i < sliders.length; i++) {
-  labels[i].innerHTML = sliders[i].value;
-}
-
+// changing the values of the sliders in real time 
 sliders[0].oninput = function () {
-  labels[0].innerHTML = this.value;
+    labels[0].innerHTML = this.value;
 }
 sliders[1].oninput = function () {
-  labels[1].innerHTML = (this.value);
-  rampAngle = angleSlider.value;
-  console.log(this.value)
-  updateRamp();
+    labels[1].innerHTML = (this.value);
+    angle = angleSlider.value;
 }
 sliders[2].oninput = function () {
-  labels[2].innerHTML = (this.value);
-}
-// }
-
-// setSlider();
-function degrees_to_radians(degrees) {
-  var pi = Math.PI;
-  return degrees * (pi / 180);
+    labels[2].innerHTML = (this.value);
 }
 
-var canvas = document.querySelector('canvas');
-var c = canvas.getContext('2d');
-
-canvas.height = 500;
-canvas.width = 500;
-
-//---------------------------
-// Functions to draw shapes
-// Useful to animate later
-// Plan: draw a rectangle to represent
-// the ramp and fill it with the image of wood
-//---------------------------
-
-const drawRect = (x, y, width, height, angle) => {
-  var translateFactorX = 0.0625;
-  var cx = x + translateFactorX * width;
-  var cy = y + height;
-
-  c.fillStyle = "#008080";
-
-  c.translate(cx, cy);
-  c.rotate(angle);
-  c.translate(-cx, -cy);
-
-  c.fillRect(x, y, width, height);
-  c.restore();
-  return [x, y];
+// drawing the ramp 
+const drawRamp = (angle) => {
+    c.save();
+    c.beginPath();
+    c.rotate(angle * Math.PI / 180);
+    c.moveTo(-750, 0);
+    c.lineWidth = 5;
+    c.lineTo(0, 0);
+    c.stroke();
+    c.restore();
 }
 
-const drawLine = (originX, originY, destX, destY) => {
-  c.beginPath();
-  c.moveTo(originX, originY);
-  c.lineWidth = 10;
-  c.lineTo(destX, destY);
-  c.strokeStyle = "#008080"
-  c.stroke();
+// drawing the base -- this should stay fixed 
+function drawBase() {
+    c.save()
+    c.beginPath();
+    c.rotate(0 * Math.PI / 180);
+    c.moveTo(-1000, 0);
+    c.lineWidth = 10;
+    c.lineTo(0, 0);
+    c.stroke();
+    c.restore();
+}
+drawBase();
+
+// the rectangle that will be sliding down the ramp -- starting point is ontop of the ramp 
+const rectangle = (posX, posY, angle) => {
+    c.save();
+    c.beginPath();
+    c.rotate(angle * Math.PI / 180);
+    c.rect(posX, posY, 80, 50);
+    c.stroke();
+    c.restore();
 }
 
-const drawCircle = (x, y, r) => {
-  c.beginPath();
-  c.arc(x, y, r, 0, Math.PI * 2, false);
-  c.strokeStyle = 'blue';
-  c.stroke();
+function animateAngle() {
+    c.clearRect(55, 0, -1500, -790); // clear the canvas 
+    const currAngle = angle; // grab the current angle on the slider 
+    drawRamp(currAngle); // draw the ramp with the respective angle
+    rectangle(-750, -52, currAngle); // draw the rectangle 
+
+    requestAnimationFrame(animateAngle); // call the animateframe to display 
+
 }
+animateAngle();
+
+var currX = -750; // set the initial X pos of the rectangle 
+var currY = -52; // set the initial Y pos of the rectangle
+
+// moving the actual rectangle down the ramp 
+function downRamp() {
+    c.clearRect(55, 0, -1500, -790); // clear the canvas 
+    const currAngle = angle; // grab the current angle
+    drawRamp(currAngle); // draw the ramp with the respective angle
+    currX = currX + 5; // increment x pos 
+    if (currX <= -80) {
+        rectangle(currX, currY, currAngle); // redraw the rec 
+    }
+    else {
+        rectangle(-80, -52, currAngle); // when its to the bottom, draw the rect at the bottom
+    }
+
+    requestAnimationFrame(downRamp); // call the animateframe to display 
 
 
-//---------------------------
-// Functions to draw the ramp
-// Takes an input angle and rotates the
-// ramp relative to that angle
-//---------------------------
-
-var bottomRightX = canvas.width;
-var bottomRightY = canvas.height;
-var jointX = 400;
-var jointY = bottomRightY - 200;
-var rampStandHeight = 0;
-var coords = [0, 0];
-
-var initialX = jointX;
-var initialY = jointY;
-
-var rampAngleRad = degrees_to_radians(rampAngle);
-
-function updateRamp() {
-  c.clearRect(0, 0, innerWidth, innerHeight);
-
-  var topAngle = 90 - rampAngle;
-  var topAngleRad = degrees_to_radians(topAngle);
-
-  //var angleLineRatio = 1/(bottomRightX-300-jointX);
-  var rampBase = 580;
-  rampStandHeight = Math.tan(rampAngleRad) * rampBase;
-  var rampLength = 580 / Math.cos(rampAngleRad);
-  // if (rampAngle > 45)
-  // rampBottom -= jointY;
-
-  jointY = canvas.height - rampStandHeight;
-  //ramp
-  drawLine(bottomRightX - 300, bottomRightY, jointX, jointY);
-
-  //ramp stand
-  drawLine(jointX, jointY - 4.55, jointX, bottomRightY);
-  c.save();
-
-  // var width = 100;
-  // var height = 100;
-  // coords = drawRect(jointX, jointY - height, width, height, rampAngleRad)
 }
-updateRamp();
-
-function drawAnimatedRect(x, y) {
-  //Draw rectangle at the top of the stand
-  var width = 100;
-  var height = 100;
-  coords = drawRect(x, y - height, width, height, rampAngleRad)
-}
-
-drawAnimatedRect(jointX, jointY);
-
-//ramp
-drawLine(bottomRightX - 300, bottomRightY, jointX, jointY);
-
-//ramp stand
-//drawLine(jointX, jointY-4.55, 500, 10000);
-
-// drawCircle(1000, bottomRightY-300,100);
-
-
-//---------------------------
-// Functions to animate shapes
-//---------------------------
-var x = 200;
-var y = 300;
-var dx = 3;
-var dy = 3;
-
-function animate() {
-  c.clearRect(0, 0, innerWidth, innerHeight);
-  // const rect = drawRect(x, y, 600, 100);
-
-  if (x + 100 > innerWidth || x + 100 < 0)
-    dx = -dx;
-
-  x += dx;
-
-  if (y + 600 > innerHeight || y + 600 < 0)
-    dy = -dy;
-
-  y += dy;
-  requestAnimationFrame(animate);
-}
-
-function init() {
-  animate();
-}
-
-// MOVING THE REC DOWN THE RAMP
-
-
-var initialX = coords[0];
-var initialY = coords[1];
-
-function moveObjectDownRamp() {
-  c.clearRect(0, 0, innerWidth, innerHeight);
-
-  // set the varibles
-  var angle = degrees_to_radians(rampAngle);
-  var mass = weightSlider.value;
-  var uk = frictionSlider.value;
-
-  var g = 9.8; //Acceleration of gravity
-  var a = 0; //Acceleration of the block
-
-  a = g * (Math.sin(angle) - uk * Math.cos(angle));
-
-  Fg = mass * g * Math.sin(angle); // Parallel force acting on the block
-  Fm = mass * g * Math.cos(angle); // Perpendicular force acting on the block
-
-  var targetX = bottomRightX - 300;
-  var targetY = bottomRightY;
-
-  const thrust = 5;
-
-  var tx = targetX - initialX;
-  var ty = targetY - initialY;
-
-  var dist = Math.sqrt(tx * tx + ty * ty);
-
-  var valX = (tx / dist) * thrust;
-  var valY = (ty / dist) * thrust;
-
-  // if the object is not at the bottom of the ramp, move the object
-  if ((Math.abs(initialX) >= (bottomRightX - 300)) || (Math.abs(initialY) >= (bottomRightY))) {
-    // equation for the velocity of the object - to increment the speed
-    initialX += valX;
-    initialY += valY;
-  }
-  // console.log(coords[0]);
-  // console.log(coords[1]);
-  updateRamp();
-  drawAnimatedRect(initialX, initialY);
-
-  // loop this function to show animation
-  requestAnimationFrame(moveObjectDownRamp)
-}
-
-moveObjectDownRamp();
