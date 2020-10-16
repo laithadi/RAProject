@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="navbar navbar-expand-lg navbar-dark">
+        <h1 class="navbar-brand">
+            Incline Ramp Simulation
+        </h1>
+    </div>
+    <canvas id="main" class="canvas-style">
+
+    </canvas>
+    <div class="container">
+        <div class="card settings">
+            <div class="card-body">
+                <h2 class="card-title">Settings</h2>
+                <form>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>Weight</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="range" name="Weight" min="0" max="1000" id="weight">
+                            <span class="font-weight-bold text-primary ml-2 valueSpan2" id="weightLabel">50</span>
+                            <span class="blue">g</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>Angle</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="range" name="angle" step="0.01" min="0" max="90" id="angle">
+                            <span class="font-weight-bold text-primary ml-2 valueSpan2" id="angleLabel">45</span>
+                            <span class="blue">°</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>Friction</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="range" name="friction" step="0.001" min="0" max="1" id="friction">
+                            <span class="font-weight-bold text-primary ml-2 valueSpan2" id="frictionLabel">50</span>
+                            <span class="blue"> μ</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                        </div>
+                        <div class="col-sm-6">
+                            <button onclick="downRamp()" class="btn btn-success" type="button"
+                                id="custom">Start</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
