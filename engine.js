@@ -84,7 +84,7 @@ function updateRamp() {
   boxSpawnX = (rampAngle)/90 * 300;
   boxSpawnY = (90-rampAngle)/90 * 290;
   World.add(world, [
-      Bodies.rectangle(400, 600, 800, 50,
+      Bodies.rectangle(400, 600, 850, 50,
       {
         isStatic: true
       }),
@@ -102,11 +102,12 @@ function updateRamp() {
       {
           friction: frictionInput,
           angle: degrees_to_radians(rampAngle),
-          mass: massInput,
+          //mass: massInput,
       })
 
   ]);
 }
+
 // fit the render viewport to the scene
 Render.lookAt(render, {
     min: { x: 0, y: 0 },
